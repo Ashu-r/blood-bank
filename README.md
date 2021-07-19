@@ -3,9 +3,7 @@
 
 ## Requirements
 - Python
-### Python packages
-- pip
-- flask
+Refer to requirements.txt for python modules.
 
 ## Steps to install and run locally
 
