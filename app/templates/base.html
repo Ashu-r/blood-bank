@@ -20,9 +20,9 @@
 		{% endif %}
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #ff1919">
+		<nav class="navbar navbar-expand-lg navbar-dark px-lg-4 mb-2" style="background-color: #ff1919">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">Blood Bank</a>
+				<a class="navbar-brand" href="{{url_for('index')}}">Blood Bank</a>
 				<button
 					class="navbar-toggler"
 					type="button"
@@ -36,12 +36,9 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
-						</li>
 						<form class="d-flex">
 							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-							<button class="btn btn-outline-success" type="submit">Search</button>
+							<button class="btn btn-outline-light" type="submit">Search</button>
 						</form>
 					</ul>
 				</div>
@@ -56,14 +53,9 @@
 			</div>
 		</nav>
 
-		{% with messages = get_flashed_messages() %}
-		{% if messages %}
-		{% for message in messages %}
-		{{message}}
-		{% endfor %}
-		{% endif %}
-		{% endwith %}
-		{% block content%} {% endblock %}
+		{% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %} {{message}} {% endfor %} {% endif %} {% endwith %}
+
+		<div class="container">{%block content%} {% endblock %}</div>
 
 		<!--Bootstrap Bundle with Popper -->
 		<script
