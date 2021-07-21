@@ -1,24 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<div class="text-center">
+	<div class="text-center d-inline-flex">
+		<main class="form-signin">
+			<form action="" method="POST">
+				{{form.hidden_tag()}}
 
-{% block content %}
-<h1>Sign In</h1>
-<form action="" method='POST'>
-    {{form.hidden_tag()}}
-    <p>
-        {{form.username.label}}<br>
-        {{form.username(size=32)}}<br>
-        {% for error in form.username.errors %}
-        <span style="color: red;"> [{{error}}] </span>
-        {% endfor %}
-    </p>
-    <p>
-        {{form.password.label}}<br>
-        {{form.password(size=32)}}<br>
-        {% for error in form.password.errors %}
-        <span style="color: red;"> [{{error}}] </span>
-        {% endfor %}
-    </p>
-    <p>{{form.submit()}}</p>
-</form>
-<p>New User ? <a href="/register">Register</a></p>
+				<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+				<div class="form-floating mb-3">
+					{{form.username(class_="form-control")}}
+					<label for="floatingInput">Email address</label>
+				</div>
+				{% for error in form.username.errors %}
+				<span style="color: red"> [{{error}}] </span>
+				{% endfor %}
+				<div class="form-floating mb-3">
+					{{form.password(size=32, class_="form-control")}}
+					<label for="floatingPassword">Password</label>
+				</div>
+				{% for error in form.password.errors %}
+				<span style="color: red"> [{{error}}] </span>
+				{% endfor %}
+				<div class="checkbox mb-3">
+					<label> <input type="checkbox" value="remember-me" /> Remember me (NI)</label>
+				</div>
+				{{form.submit(class_="w-100 btn btn-lg btn-primary")}}
+				<p class="mt-5 mb-3 text-muted">© Open blood bank</p>
+				<p>New User ? <a class="btn btn-lg btn-outline-primary ms-3" href="/register">Register</a></p>
+			</form>
+		</main>
+	</div>
+</div>
+
 {% endblock %}

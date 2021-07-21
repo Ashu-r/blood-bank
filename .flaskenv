@@ -1,1 +1,2 @@
 FLASK_APP=bloodbank.py
+FLASK_ENV=developement
