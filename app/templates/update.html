@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Register</h1>
+<h1>Update</h1>
 <form action="" method='POST'>
     {{form.hidden_tag()}}
     <p>
@@ -18,24 +18,6 @@
         {{form.email(size=32)}}<br>
         {% if form.email.errors %}
         {% for error in form.email.errors %}
-        <span style="color: red;"> [{{error}}] </span>
-        {% endfor %}
-        {% endif %}
-    </p>
-    <p>
-        {{form.password.label}}<br>
-        {{form.password(size=32)}}<br>
-        {% if form.password.errors %}
-        {% for error in form.password.errors %}
-        <span style="color: red;"> [{{error}}] </span>
-        {% endfor %}
-        {% endif %}
-    </p>
-    <p>
-        {{form.confirm_password.label}}<br>
-        {{form.confirm_password(size=32)}}<br>
-        {% if form.confirm_password.errors %}
-        {% for error in form.confirm_password.errors %}
         <span style="color: red;"> [{{error}}] </span>
         {% endfor %}
         {% endif %}
@@ -122,7 +104,6 @@
         {% endif %}
     </p>
     <p> {{form.submit()}}</p>
+    <p><a href="/cancel">Cancel</a></p>
 </form>
-
-<p>already have account? <a href="/login">Login</a></p>
 {% endblock %}

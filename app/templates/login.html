@@ -8,19 +8,23 @@
 				<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
 				<div class="form-floating mb-3">
-					{{form.username(class_="form-control")}}
+					{{form.email(class_="form-control")}}
 					<label for="floatingInput">Email address</label>
 				</div>
-				{% for error in form.username.errors %}
-				<span style="color: red"> [{{error}}] </span>
+				{% if form.email.errors %}
+				{% for error in form.email.errors %}
+				<span style="color: red"> {{error}} </span>
 				{% endfor %}
+				{% endif %}
 				<div class="form-floating mb-3">
 					{{form.password(size=32, class_="form-control")}}
 					<label for="floatingPassword">Password</label>
 				</div>
+				{% if form.password.errors %}
 				{% for error in form.password.errors %}
-				<span style="color: red"> [{{error}}] </span>
+				<span style="color: red"> {{error}} </span>
 				{% endfor %}
+				{% endif %}
 				<div class="checkbox mb-3">
 					<label> <input type="checkbox" value="remember-me" /> Remember me (NI)</label>
 				</div>
