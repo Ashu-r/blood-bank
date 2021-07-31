@@ -1,6 +1,7 @@
 from app.models import Donor
+from wtforms.fields.html5 import DateField
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, SelectField, RadioField, DateField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, SelectField, RadioField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length
 
 
@@ -22,7 +23,7 @@ class RegistrationForm(FlaskForm):
     weight = IntegerField('Weight', validators=[DataRequired()])
     gender = RadioField('Gender', choices=[
                         ('m', 'MALE'), ('f', 'FEMALE')], validators=[DataRequired()])
-    lastdonation = StringField(
+    lastdonation = DateField(
         'Last donation date', validators=[DataRequired()])
     submit = SubmitField('Register')
 

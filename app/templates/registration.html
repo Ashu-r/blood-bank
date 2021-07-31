@@ -5,184 +5,105 @@
 			{{form.hidden_tag()}}
 			<h1>Register</h1>
 			<div class="form-floating mb-3">
-				{{form.username(size=32,class_="form-control",id="username",placeholder="Enter username")}} {{form.username.label}}
+				{{form.username(size=32,class_="form-control",id="username",placeholder="Enter username")}}
+				{{form.username.label}}
 			</div>
 			{% for error in form.username.errors %}
 			<span style="color: red"> [{{error}}] </span>
 			{% endfor %}
 
-			<div class="form-floating mb-3">{{form.email(class_="form-control",id="email",placeholder="placeholder")}} {{form.email.label}}</div>
+			<div class="form-floating mb-3">
+				{{form.email(class_="form-control",id="email",placeholder="placeholder")}}
+				{{form.email.label}}
+			</div>
 			{% for error in form.email.errors %}
 			<span style="color: red"> [{{error}}] </span>
 			{% endfor %}
 
 			<div class="form-floating mb-3">
-				{{form.password(size=32,id="password",class_="form-control",placeholder="placeholder")}} {{form.password.label}}
+				{{form.password(size=32,id="password",class_="form-control",placeholder="placeholder")}}
+				{{form.password.label}}
 			</div>
 			{% for error in form.password.errors %}
 			<span style="color: red"> [{{error}}] </span>
 			{% endfor %}
 
 			<div class="form-floating mb-3">
-				{{form.contact(size=32,id="contact",class_="form-control",placeholder="placeholder")}} {{form.contact.label}}
+				{{form.contact(size=32,id="contact",class_="form-control",placeholder="placeholder")}}
+				{{form.contact.label}}
 			</div>
 			{% for error in form.contact.errors %}
 			<span style="color: red"> [{{error}}] </span>
 			{% endfor %}
 
-			<div class="form-floating mb-3">{{form.state(size=32,id="state",class_="form-control",placeholder="placeholder")}} {{form.state.label}}</div>
+			<div class="form-floating mb-3">
+				{{form.state(size=32,id="state",class_="form-control",placeholder="placeholder")}}
+				{{form.state.label}}
+			</div>
 			{% for error in form.state.errors %}
 			<span style="color: red"> [{{error}}] </span>
 			{% endfor %}
 
-			<div class="form-floating mb-3">{{form.city(size=32,id="city",class_="form-control",placeholder="placeholder")}} {{form.city.label}}</div>
+			<div class="form-floating mb-3">
+				{{form.city(size=32,id="city",class_="form-control",placeholder="placeholder")}}
+				{{form.city.label}}
+			</div>
 			{% for error in form.city.errors %}
 			<span style="color: red"> [{{error}}] </span>
 			{% endfor %}
 
 			<div class="form-floating mb-3">
-				{{form.pincode(size=32,id="pincode",class_="form-control",placeholder="placeholder")}} {{form.pincode.label}}
+				{{form.pincode(size=32,id="pincode",class_="form-control",placeholder="placeholder")}}
+				{{form.pincode.label}}
 			</div>
 			{% for error in form.pincode.errors %}
 			<span style="color: red"> [{{error}}] </span>
 			{% endfor %}
 
 			<div class="form-floating mb-3">
-				{{form.bloodgroup(size=32,id="bloodgroup",class_="form-select",placeholder="placeholder")}} {{form.bloodgroup.label}}
+				{{form.bloodgroup(size=32,id="bloodgroup",class_="form-select",placeholder="placeholder")}}
+				{{form.bloodgroup.label}}
 			</div>
 			{% for error in form.bloodgroup.errors %}
 			<span style="color: red"> [{{error}}] </span>
 			{% endfor %}
 
-			<p>
-				{{form.age.label}}<br />
-				{{form.age(size=32)}}<br />
-				{% for error in form.age.errors %}
-				<span style="color: red"> [{{error}}] </span>
-				{% endfor %}
-			</p>
-			<p>
-				{{form.weight.label}}<br />
-				{{form.weight(size=32)}}<br />
-				{% for error in form.weight.errors %}
-				<span style="color: red"> [{{error}}] </span>
-				{% endfor %}
-			</p>
-			<p>
-				{{form.gender.label}}<br />
-				{{form.gender(size=32)}}<br />
-				{% for error in form.gender.errors %}
-				<span style="color: red"> [{{error}}] </span>
-				{% endfor %}
-			</p>
-			<p>
-				{{form.lastdonation.label}}<br />
-				{{form.lastdonation(size=32)}}<br />
-				{% for error in form.lastdonation.errors %}
-				<span style="color: red"> [{{error}}] </span>
-				{% endfor %}
-			</p>
+			<div class="form-floating mb-3">
+				{{form.age(size=32,id="age",class_="form-control",placeholder="placeholder")}}
+				{{form.age.label}}
+			</div>
+			{% for error in form.age.errors %}
+			<span style="color: red"> [{{error}}] </span>
+			{% endfor %}
+
+			<div class="form-floating mb-3">
+				{{form.weight(size=32,id="weight",class_="form-control",placeholder="placeholder")}}
+				{{form.weight.label}}
+			</div>
+			{% for error in form.weight.errors %}
+			<span style="color: red"> [{{error}}] </span>
+			{% endfor %}
+
+			<div class="form-check mb-3">
+				{% for subfield in form.gender%}
+				<div class="form-check">
+					{{subfield(class_="form-check-input")}} {{subfield.label(class_="form-check-label")}}
+				</div>
+				{% endfor%}
+			</div>
+			{% for error in form.gender.errors %}
+			<span style="color: red"> [{{error}}] </span>
+			{% endfor %}
+
+			<div class="mb-3">{{form.lastdonation()}} {{form.lastdonation.label}}</div>
+			{% for error in form.lastdonation.errors %}
+			<span style="color: red"> [{{error}}] </span>
+			{% endfor %}
+
 			<p>{{form.submit()}}</p>
 		</form>
 	</div>
 </div>
-{% block content %}
-<h1>Register</h1>
-<form action="" method="POST">
-	{{form.hidden_tag()}}
-	<p>
-		{{form.username.label}}<br />
-		{{form.username(size=32)}}<br />
-		{% if form.username.errors %} {% for error in form.username.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.email.label}}<br />
-		{{form.email(size=32)}}<br />
-		{% if form.email.errors %} {% for error in form.email.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.password.label}}<br />
-		{{form.password(size=32)}}<br />
-		{% if form.password.errors %} {% for error in form.password.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.confirm_password.label}}<br />
-		{{form.confirm_password(size=32)}}<br />
-		{% if form.confirm_password.errors %} {% for error in form.confirm_password.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.contact.label}}<br />
-		{{form.contact(size=32)}}<br />
-		{% if form.contact.errors %} {% for error in form.contact.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.state.label}}<br />
-		{{form.state(size=32)}}<br />
-		{% if form.state.errors %} {% for error in form.state.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.city.label}}<br />
-		{{form.city(size=32)}}<br />
-		{% if form.city.errors %} {% for error in form.city.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.pincode.label}}<br />
-		{{form.pincode(size=32)}}<br />
-		{% if form.pincode.errors %} {% for error in form.pincode.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.bloodgroup.label}}<br />
-		{{form.bloodgroup}}<br />
-		{% if form.bloodgroup.errors %} {% for error in form.bloodgroup.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.age.label}}<br />
-		{{form.age(size=32)}}<br />
-		{% if form.age.errors %} {% for error in form.age.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.weight.label}}<br />
-		{{form.weight(size=32)}}<br />
-		{% if form.weight.errors %} {% for error in form.weight.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.gender.label}}<br />
-		{{form.gender(size=32)}}<br />
-		{% if form.gender.errors %} {% for error in form.gender.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>
-		{{form.lastdonation.label}}<br />
-		{{form.lastdonation(size=32)}}<br />
-		{% if form.lastdonation.errors %} {% for error in form.lastdonation.errors %}
-		<span style="color: red"> [{{error}}] </span>
-		{% endfor %} {% endif %}
-	</p>
-	<p>{{form.submit()}}</p>
-</form>
 
 <p>already have account? <a href="/login">Login</a></p>
 {% endblock %}
