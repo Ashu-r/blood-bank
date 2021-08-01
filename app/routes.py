@@ -1,5 +1,5 @@
 from flask.helpers import url_for
-from app.forms import LoginForm, RegistrationForm, UpdateForm
+from app.forms import LoginForm, RegistrationForm, SearchForm, UpdateForm
 from app.models import Donor
 from flask import render_template, redirect, flash, request
 from app import app, db
@@ -29,11 +29,11 @@ def register():
     return render_template('registration.html', title='Register', form=form)
 
 
-@app.route('/search', methods=['GET', 'POST'])
-def search():
-    blood_group = request.args.get('bg')
-    city = request.args.get('city')
-    return f'result for blood group {blood_group} and city {city}'
+#@app.route('/search', methods=['GET', 'POST'])
+#def search():
+ #   blood_group = request.args.get('bg')
+  #  city = request.args.get('city')
+   # return f'result for blood group {blood_group} and city {city}'
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -98,3 +98,18 @@ def update():
 @app.route("/cancel")
 def cancel():
     return redirect(url_for('my_account'))
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    form=SearchForm()
+    if form.validate_on_submit():
+        city = form.city.data
+        blood = form.blood.data
+        results=Donor.query.filter_by(bloodgroup = blood , city=city).all()
+        if not results:
+            flash("No Results Available..")
+        else:
+            return render_template('result.html',results=results)
+    return render_template('search.html',form=form)
+

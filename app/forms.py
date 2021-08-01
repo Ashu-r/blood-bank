@@ -76,3 +76,9 @@ class UpdateForm(FlaskForm):
         if user:
             raise ValidationError(
                 'The email is taken, Please choose different Email.')
+
+class SearchForm(FlaskForm):
+    blood = SelectField('Blood Group', choices=[('#' , 'Select Blood Group'),('a+', 'A+'), ('b+', 'B+'), ('o+', 'O+'), (
+        'ab+', 'AB+'), ('a-', 'A-'), ('o-', 'O-'), ('b-', 'B-'), ('ab-', 'AB-')], validators=[DataRequired()])
+    city = StringField('city' , validators=[DataRequired()])
+    submit=SubmitField('Search')
