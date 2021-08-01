@@ -106,7 +106,9 @@ def search():
     if form.validate_on_submit():
         city = form.city.data
         blood = form.blood.data
-        results=Donor.query.filter_by(bloodgroup = blood , city=city).all()
+        # results=Donor.query.filter_by(bloodgroup = blood , city=city).all()
+        results = Donor.query.filter(Donor.city.like('%' + city + '%')).filter_by(bloodgroup=blood)
+        print(results)
         if not results:
             flash("No Results Available..")
         else:
