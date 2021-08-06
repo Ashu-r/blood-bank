@@ -1,10 +1,26 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Available Donors</h1>
-{% for result in results %} Name: {{ result.username }}<br />
-Contact No: {{ result.contact }}
-<hr />
-{% else %}
-<p>No donors available</p>
-{% endfor %}
-<p><a class="btn btn-lg btn-outline-primary ms-3" href="/index">Back</a></p>
+<div class="container mt-4">
+	<h1>Available Donors</h1>
+	{% for result in results %}
+
+	<div class="card border-primary mb-3">
+		<div class="card-body">
+			<h5 class="card-title">Name: {{ result.username }}</h5>
+			<p class="card-text">Contact No: {{ result.contact }}</p>
+			<a href="#" class="btn btn-primary">View</a>
+		</div>
+	</div>
+	{% else %}
+	<div class="card text-dark bg-warning mb-3" style="max-width: 18rem">
+		<div class="card-header">Sorry !</div>
+		<div class="card-body">
+			<h5 class="card-title">No donors found</h5>
+			<p class="card-text">
+				We currently do not have any donors that match your criteria, please check after some time!
+			</p>
+		</div>
+	</div>
+	{% endfor %}
+	<p><a class="btn btn-lg btn-info ms-3" href="/index">Back</a></p>
+</div>
 {% endblock %}
