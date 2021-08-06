@@ -1,3 +1,28 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Home Page</h1>
+<div class="container">
+	<div class="row height d-flex justify-content-center align-items-center">
+		<div class="col-md-8">
+			<form action="/result" method="GET">
+				<div class="mb-4 m">
+					<select name="bg" class="form-select" aria-label=" select ">
+						<option selected>Choose blood group</option>
+						<option value="a+">A+</option>
+						<option value="b+">B+</option>
+						<option value="o+">O+</option>
+						<option value="ab+">AB+</option>
+						<option value="a-">A-</option>
+						<option value="b-">B-</option>
+						<option value="o-">O-</option>
+						<option value="ab-">AB-</option>
+					</select>
+				</div>
+				<div class="search">
+					<i class="fa fa-search"></i>
+					<input type="text" name="city" class="form-control" placeholder="Search by city" />
+					<button type="submit" class="btn btn-primary">Search</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 {% endblock %}
